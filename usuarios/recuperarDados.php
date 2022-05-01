@@ -2,7 +2,7 @@
 
 include_once("../conexao.php");
 
-   $id = .$_GET['id'];
+   $id = $_GET['id'];
 
 $dados = array();
 
