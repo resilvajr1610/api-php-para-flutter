@@ -2,11 +2,17 @@
 
 include_once("../conexao.php");
 
-   $nome = '%'.$_GET['nome'].'%';
+$nome = '%'.$_GET['nome'].'%';
+$idcat = $_GET['idcat'];
 
 $dados = array();
 
-$query = $pdo->query("SELECT * from produtos where nome like '$nome' order by vendas limit 8");
+if($idcat ==''){
+    $query = $pdo->query("SELECT * from produtos where nome like '$nome' order by vendas");
+}else{
+    $query = $pdo->query("SELECT * from produtos where categoria = '$idcat' order by vendas");
+}
+
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 
 for ($i=0; $i < count($res); $i++){
